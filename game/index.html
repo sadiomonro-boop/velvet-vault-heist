@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velvet Vault Heist</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0b0b14; height: 100%; }
+  body { display: flex; align-items: center; justify-content: center; font-family: Georgia, 'Times New Roman', serif; }
+  #wrap { position: relative; width: min(1280px, 100vw); }
+  canvas { display: block; width: 100%; height: auto; background: #141a2e; cursor: crosshair; }
+  #hint { color: #8a8fa8; text-align: center; font-size: 13px; padding: 8px 0 0; font-family: system-ui, sans-serif; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="1280" height="720"></canvas>
+  <div id="hint">WASD / arrows to move &middot; Shift to sneak &middot; Click to throw a smoke bomb &middot; 2 for EMP &middot; R to restart</div>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
