@@ -32,6 +32,11 @@ export function createGame(onEvent) {
     smokes: [],
     sneaking: false,
     seenBy: null,
+    // True for a staged ?shot= scene: update() leaves the tableau frozen
+    // so the sneaking ring / SPOTTED banner the maker staged survive the
+    // frame instead of being overwritten by live detection. Normal play
+    // never sets this.
+    staged: false,
     time: 0,
     onEvent,
   };
@@ -46,6 +51,7 @@ export function createGame(onEvent) {
     s.lootTaken = false;
     s.smokes = [];
     s.seenBy = null;
+    s.staged = false;
     for (const c of s.level.smallLoot) c.taken = false;
   }
 
@@ -112,16 +118,21 @@ export function createGame(onEvent) {
 
   // Staged scenes for the maker's screenshots — real renders of this code
   // with the thief placed mid-heist. Normal play never uses ?shot=.
+  // Every shot freezes into a tableau (s.staged): update() returns early
+  // so the staged sneaking / SPOTTED state is never overwritten by live
+  // detection or by the lack of a held key.
   function applyShot(n) {
     if (n === 1) {
       loadLevel(0);
       s.state = 'playing';
+      s.staged = true;
       s.thief = { x: 470, y: 430 };
       s.alarm = 34;
       s.score = 40;
     } else if (n === 2) {
       loadLevel(1);
       s.state = 'playing';
+      s.staged = true;
       s.thief = { x: 430, y: 430 };
       s.sneaking = true;
       s.alarm = 18;
@@ -130,7 +141,12 @@ export function createGame(onEvent) {
     } else if (n === 3) {
       loadLevel(0);
       s.state = 'playing';
-      s.thief = { x: 760, y: 200 };
+      s.staged = true;
+      // Guard 0 starts at (280, 560) facing up its patrol lane; the thief
+      // stands 130 px ahead of it, genuinely inside its amber cone with
+      // clear line of sight, so the guard is alerted for real.
+      s.guards[0].angle = -Math.PI / 2;
+      s.thief = { x: 280, y: 430 };
       s.alarm = 88;
       s.score = 60;
       s.guards[0].alerted = true;
@@ -138,6 +154,7 @@ export function createGame(onEvent) {
     } else if (n === 4) {
       loadLevel(2);
       s.state = 'playing';
+      s.staged = true;
       s.thief = { x: 1120, y: 130 };
       s.lootTaken = true;
       s.alarm = 12;
@@ -148,6 +165,10 @@ export function createGame(onEvent) {
   function update(dt, move) {
     s.time += dt;
     if (s.state !== 'playing') return;
+    // A staged ?shot= tableau never advances: guards, cameras, alarm and
+    // the staged sneaking / SPOTTED state stay exactly as applyShot set
+    // them, so the screenshot shows the staged moment, not a later frame.
+    if (s.staged) return;
     s.sneaking = move.sneaking;
     if (move.x !== 0 || move.y !== 0) moveThief(move.x, move.y, dt);
 

@@ -47,7 +47,7 @@ export const LEVELS = [
     smallLoot: [
       { x: 300, y: 180, taken: false },
       { x: 640, y: 560, taken: false },
-      { x: 1080, y: 520, taken: false },
+      { x: 1130, y: 600, taken: false },
     ],
     walls: [
       block(0, 0, VIEW_W, WALL_T, 'wall'),
@@ -66,11 +66,11 @@ export const LEVELS = [
       block(1080, 330, 70, 90, 'desk'),
     ],
     guards: [
-      { waypoints: [{ x: 380, y: 420 }, { x: 380, y: 130 }, { x: 760, y: 130 }, { x: 760, y: 420 }], pause: 0.9 },
-      { waypoints: [{ x: 1080, y: 620 }, { x: 1080, y: 300 }, { x: 700, y: 620 }], pause: 1.2 },
+      { waypoints: [{ x: 280, y: 560 }, { x: 280, y: 130 }, { x: 900, y: 130 }, { x: 900, y: 560 }], pause: 0.9 },
+      { waypoints: [{ x: 1160, y: 620 }, { x: 1160, y: 200 }], pause: 1.2 },
     ],
     cameras: [
-      { x: 640, y: 40, baseAngle: Math.PI / 2, sweep: 0.85, speed: 0.55 },
+      { x: 640, y: 64, baseAngle: Math.PI / 2, sweep: 0.85, speed: 0.55 },
       { x: 1180, y: 380, baseAngle: Math.PI, sweep: 0.7, speed: 0.7 },
     ],
   },
@@ -79,7 +79,7 @@ export const LEVELS = [
     briefing: 'The Golden Idol waits behind two patrols. Cameras never blink.',
     playerStart: { x: 90, y: 120 },
     exit: { x: 1180, y: 600, w: 62, h: 84 },
-    loot: { x: 640, y: 360, label: 'Golden Idol' },
+    loot: { x: 640, y: 460, label: 'Golden Idol' },
     smallLoot: [
       { x: 220, y: 560, taken: false },
       { x: 1060, y: 160, taken: false },
@@ -104,13 +104,13 @@ export const LEVELS = [
       block(780, 360, 60, 60, 'plant'),
     ],
     guards: [
-      { waypoints: [{ x: 300, y: 150 }, { x: 980, y: 150 }, { x: 980, y: 600 }, { x: 300, y: 600 }], pause: 0.7 },
-      { waypoints: [{ x: 640, y: 200 }, { x: 640, y: 520 }], pause: 1.0 },
-      { waypoints: [{ x: 200, y: 360 }, { x: 1080, y: 360 }], pause: 0.5 },
+      { waypoints: [{ x: 220, y: 150 }, { x: 1060, y: 150 }, { x: 1060, y: 600 }, { x: 220, y: 600 }], pause: 0.7 },
+      { waypoints: [{ x: 560, y: 200 }, { x: 560, y: 520 }], pause: 1.0 },
+      { waypoints: [{ x: 200, y: 450 }, { x: 1080, y: 450 }], pause: 0.5 },
     ],
     cameras: [
-      { x: 80, y: 40, baseAngle: Math.PI / 2, sweep: 0.9, speed: 0.6 },
-      { x: 1200, y: 40, baseAngle: Math.PI / 2, sweep: 0.9, speed: 0.6 },
+      { x: 80, y: 64, baseAngle: Math.PI / 2, sweep: 0.9, speed: 0.6 },
+      { x: 1200, y: 64, baseAngle: Math.PI / 2, sweep: 0.9, speed: 0.6 },
       { x: 640, y: 680, baseAngle: -Math.PI / 2, sweep: 0.8, speed: 0.8 },
     ],
   },
@@ -119,7 +119,7 @@ export const LEVELS = [
     briefing: 'One last prize — the Crown of Meridia — then the van on the roof.',
     playerStart: { x: 90, y: 600 },
     exit: { x: 1180, y: 84, w: 62, h: 84 },
-    loot: { x: 640, y: 300, label: 'Crown of Meridia' },
+    loot: { x: 640, y: 430, label: 'Crown of Meridia' },
     smallLoot: [
       { x: 300, y: 150, taken: false },
       { x: 980, y: 560, taken: false },
@@ -141,13 +141,13 @@ export const LEVELS = [
       block(640, 120, 200, 18, 'rope'),
     ],
     guards: [
-      { waypoints: [{ x: 250, y: 130 }, { x: 1030, y: 130 }, { x: 1030, y: 610 }, { x: 250, y: 610 }], pause: 0.6 },
-      { waypoints: [{ x: 640, y: 140 }, { x: 640, y: 580 }], pause: 0.8 },
-      { waypoints: [{ x: 180, y: 500 }, { x: 1100, y: 500 }, { x: 1100, y: 200 }, { x: 180, y: 200 }], pause: 0.6 },
+      { waypoints: [{ x: 290, y: 130 }, { x: 950, y: 130 }, { x: 950, y: 610 }, { x: 290, y: 610 }], pause: 0.6 },
+      { waypoints: [{ x: 560, y: 140 }, { x: 560, y: 580 }], pause: 0.8 },
+      { waypoints: [{ x: 290, y: 420 }, { x: 950, y: 420 }], pause: 0.6 },
     ],
     cameras: [
-      { x: 320, y: 40, baseAngle: Math.PI / 2, sweep: 1.0, speed: 0.75 },
-      { x: 960, y: 40, baseAngle: Math.PI / 2, sweep: 1.0, speed: 0.75 },
+      { x: 320, y: 64, baseAngle: Math.PI / 2, sweep: 1.0, speed: 0.75 },
+      { x: 960, y: 64, baseAngle: Math.PI / 2, sweep: 1.0, speed: 0.75 },
       { x: 1180, y: 360, baseAngle: Math.PI, sweep: 0.8, speed: 0.9 },
       { x: 80, y: 360, baseAngle: 0, sweep: 0.8, speed: 0.9 },
     ],

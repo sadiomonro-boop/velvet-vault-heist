@@ -271,10 +271,6 @@ export function render(ctx, s) {
   ctx.font = 'bold 15px system-ui, sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText(exitOpen ? 'GO!' : 'EXIT', e.x + e.w / 2, e.y + e.h / 2 + 5);
-  ctx.fillStyle = '#bbf7d0';
-  ctx.font = '12px system-ui, sans-serif';
-  ctx.textAlign = 'right';
-  ctx.fillText(exitOpen ? 'getaway van waits' : 'locked until loot', VIEW_W - 30, e.y + e.h + 16);
   ctx.textAlign = 'center';
 
   // Vision cones UNDER the actors, over the floor.
@@ -291,6 +287,14 @@ export function render(ctx, s) {
   }
 
   for (const w of s.level.walls) drawWall(ctx, w);
+
+  // Exit label AFTER the walls: the bottom outer wall used to paint over
+  // it (level 2's label sat inside the wall band and was illegible).
+  ctx.fillStyle = '#bbf7d0';
+  ctx.font = '12px system-ui, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(exitOpen ? 'getaway van waits' : 'locked until loot', VIEW_W - 30, e.y + e.h + 16);
+  ctx.textAlign = 'center';
 
   // Small loot: gold coins.
   for (const c of s.level.smallLoot) {
@@ -422,6 +426,6 @@ export function render(ctx, s) {
     ctx.fillText('Final loot: $' + s.score, VIEW_W / 2, 400);
     ctx.fillStyle = '#b9bed4';
     ctx.font = '18px system-ui, sans-serif';
-    ctx.fillText('Press R to run it back', VIEW_W / 2, 445);
+    ctx.fillText('Press R to replay this room', VIEW_W / 2, 445);
   }
 }
